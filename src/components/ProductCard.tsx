@@ -23,41 +23,45 @@ export interface Props {
 
 export const ProductCard = ({ children, product, className, style, onChange, value, initialValues }: Props) => {
 
-    const { increaseBy, counter, maxCount, isMaxCountReached, reset } = useProduct({ onChange, product, value, initialValues });
+    const { increaseBy, 
+            counter, 
+            maxCount, 
+            isMaxCountReached, 
+            reset } = useProduct({ onChange, product, value, initialValues });
 
-  return (
-    <Provider value={{
-        counter,
-        increaseBy,
-        product,
-        maxCount
-    }}>
-        <div 
-            
-            className={ `${styles.productCard} ${className} ` }
-            style={ style }
-        >
+    return (
+        <Provider value={{
+            counter,
+            increaseBy,
+            product,
+            maxCount
+        }}>
+            <div 
+                
+                className={ `${styles.productCard} ${className} ` }
+                style={ style }
+            >
 
-            { 
-                children({
-                    count: counter,
-                    isMaxCountReached,
-                    maxCount: initialValues?.maxCount,
-                    product,
-                    increaseBy,
-                    reset
-                }) 
-            }
-            {/* {
-                <ProductImage img={ product.img }/>
-                <ProductTitle title={ product.title } />
-                <ProductButtons incrementFn={ increasedBy} counter={ counter } />
-            } */}
+                { 
+                    children({
+                        count: counter,
+                        isMaxCountReached,
+                        maxCount: initialValues?.maxCount,
+                        product,
+                        increaseBy,
+                        reset
+                    }) 
+                }
+                {/* {
+                    <ProductImage img={ product.img }/>
+                    <ProductTitle title={ product.title } />
+                    <ProductButtons incrementFn={ increasedBy} counter={ counter } />
+                } */}
 
-        </div>
-    </Provider>
-    
-  )
+            </div>
+        </Provider>
+        
+    )
 }
 
 //*Creating new properties to the ProductCard Component and adding to this properties the respective components
